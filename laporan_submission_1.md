@@ -73,27 +73,27 @@ Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 1. Deskripsi Variabel
-    * ![EDA Deskripsi Variabel](/eda-deskripsi-variabel.PNG)
+    * ![eda-deskripsi-variabel](https://github.com/user-attachments/assets/314350c1-5d96-40e2-9b5a-10dc14b94e9f)
 
 2. Memeriksa Missing Value
-    * ![EDA Missing Value](/eda-missing-value.PNG)
+    * ![eda-missing-value](https://github.com/user-attachments/assets/bbedd64d-d059-4298-9a11-2487b56993e4)
 
 3. Mendeteksi Outlier
-    * ![EDA Mendeteksi Outlier](/eda-outlier.PNG)
+    * ![eda-outlier](https://github.com/user-attachments/assets/709f5a8b-1055-450a-b468-0ce557041f02)
 
 4. Univariate Analysis (Numerical & Categorical)
-    * ![EDA Univariate Analysis - Numerical](/eda-univariate-numerical.PNG)
-    * ![EDA Univariate Analysis - Categorical](/eda-univariate-categorical.PNG)
+    * ![eda-univariate-numerical](https://github.com/user-attachments/assets/7079414f-4e24-4616-bd23-c00143a1efa7)
+    * ![eda-univariate-categorical](https://github.com/user-attachments/assets/042d2a4f-b83e-4803-b6ad-7ee8f6d58e9e)
 
 5. Multivariate Analysis (Numerical & Categorical)
-    * ![EDA Multivariate Analysis - Numerical](/eda-multivariate-numerical.PNG)
-    * ![EDA Multivariate Analysis - Categorical](/eda-multivariate-categorical.PNG)
+    * ![eda-multivariate-numerical](https://github.com/user-attachments/assets/91377e86-eb72-4534-8243-a0d011ebf716)
+    * ![eda-multivariate-categorical](https://github.com/user-attachments/assets/02f78d29-1ba7-4630-afdb-7a7203fbc016)
 
 6. Correlation Matrix
-    * ![Correlation Matrix Fitur Numerik](/corr_matrix.PNG)
+    * ![corr_matrix](https://github.com/user-attachments/assets/4a68597a-0ba0-4203-98d8-f03f7f92de29)
 
 7. Drop Kolom Numerik yang Tidak Memiliki Korelasi atau dengan Korelasi Rendah mendekati 0
-    * ![Drop No Corr](/drop-kolom-dengan-korelasi-rendah-dan-tidak-ada-korelasi.PNG)
+    * ![drop-kolom-dengan-korelasi-rendah-dan-tidak-ada-korelasi](https://github.com/user-attachments/assets/6b45bb5a-2656-478d-b349-ad631eadb454)
 
 ## Data Preparation
 Sebelum membangun model machine learning, dilakukan beberapa tahap persiapan data untuk memastikan bahwa data dalam kondisi optimal untuk dilatih dan diuji oleh algoritma. Berikut teknik-teknik data preparation yang digunakan secara berurutan seperti **One Hot Encoding**, **Train-Test Split**, dan **Standarisasi (Standardization)**
