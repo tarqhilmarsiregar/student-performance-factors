@@ -127,7 +127,7 @@ Untuk menyelesaikan permasalahan prediksi skor ujian siswa, dilakukan beberapa t
 - Kelebihan algoritma Random Forest yakni akurasi tinggi karena menggunakan banyak decision tree sehingga hasil prediksi lebih stabil. Kekurangan nya yakni lebih lambat untuk prediksi karena menggunakan banyak pohon yang harus dievaluasi
 - Kelebihan algoritma KNN yakni sederhana dan mudah dipahami serta diimplementasikan, namun kekurangan nya adalah sensitif terhadap skala data maka dari itu harus distandarisasi terlebih dulu. 
 - Berdasarkan gambar di bawah ini, terlihat bahwa model Random Forest (RF) memberikan nilai error yang paling kecil. Sedangkan model dengan algoritma KNN memiliki error yang paling besar (berdasrkan grafik, angkanya di atas 0.006). Sehingga model Random Forest (RF) yang akan saya pilih sebagai model terbaik untuk melakukan prediksi **Exam_Score**
-    * ![Random Forest vs KNN](/rf-vs-knn.png)
+    * ![rf-vs-knn](https://github.com/user-attachments/assets/dc6a9049-d204-4c14-ba61-17819eff242f)
 
 ## Evaluation
 Saya memilih kasus regresi dan menggunakan metrik MAE (Mean Absolute Error) dan MSE (Mean Squared Error)
@@ -136,7 +136,7 @@ Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, 
 - Penggunaan metrik MSE untuk memberikan penalti lebih besar pada kesalahan yang jauh sehingga dapat membantu model lebih peka terhadap prediksi yang jauh melesat. 
 - Penggunaan metrik MAE untuk menghitung rata rata dari selisih absolut antara nilai prediksi dengan nilai sebenarnya sehingga hasilnya lebih mudah dipahami, misalnya meleset 0.005 dari nilai sebenarnya
 - Dalam kasus prediksi nilai **Exam_Score**, model Random Forest (RF) dan KNN menunjukkan performa yang cukup baik dengan prediksi yang mendekati nilai aktual. Namun, jika dibandingkan berdasarkan dua metrik evaluasi, berikut penilaiannya:
-    * ![Hasil Prediksi Proyek](/hasil-prediksi-proyek.PNG)
+    * ![hasil-prediksi-proyek](https://github.com/user-attachments/assets/e6a4ad29-196a-484e-a0c8-d03bb104e7e2)
         1. Random Forest memiliki nilai MAE dan MSE yang lebih kecil dibandingkan KNN, yang berarti prediksi dari Random Forest lebih akurat dan stabil.
         2. MAE Random Forest sebesar 0.2 menunjukkan bahwa rata-rata kesalahan prediksi hanya sekitar 0.2 poin dari nilai sebenarnya, sedangkan KNN meleset sekitar 0.4 poin.
         3. Dari sisi MSE, Random Forest juga lebih baik (0.04 vs 0.16), yang menunjukkan bahwa model ini kurang rentan terhadap kesalahan ekstrem.
@@ -145,11 +145,11 @@ Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, probl
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - MAE (Mean Absolute Error)
-    - ![Mean Absolute Error - Formula ](/mae.PNG)
+    - ![mae](https://github.com/user-attachments/assets/b994ab4d-6943-420b-bd65-6af009568a8c)
     - Formula dari metrik ini digunakan untuk menghitung selisih absolut antara nilai aktual dengan nilai prediksi kemudian semua selisih nya dijumlahkan, lalu dirata ratakan
 
 - MSE (Mean Squared Error)
-    - ![Mean Squared Error - Formula](/mse.jpeg)
+    - ![mse](https://github.com/user-attachments/assets/b2d99ddd-c9b8-49c0-8355-d4cad4a3afcb)
     - Formula dari metrik ini digunakan untuk menghitung rata rata dari kuadrat selisih antara nilai aktual dengan nilai prediksi. Hal ini sama dengan MAE, namun hasilnya akan dikuadratkan. Karena, dikuadratkan maka kesalahan besar akan dihukum / penalti lebih keras
 
 **---Ini adalah bagian akhir laporan---**
