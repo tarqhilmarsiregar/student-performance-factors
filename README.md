@@ -136,8 +136,11 @@ Untuk menyelesaikan permasalahan prediksi skor ujian siswa, dilakukan beberapa t
 Saya memilih kasus regresi dan menggunakan metrik MAE (Mean Absolute Error) dan MSE (Mean Squared Error)
 
 Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penggunaan metrik MSE untuk memberikan penalti lebih besar pada kesalahan yang jauh sehingga dapat membantu model lebih peka terhadap prediksi yang jauh melesat. Pada kasus ini, hasil metrik MSE yang didapatkan pada data train dan test dapat dilihat pada gambar di bawah ini.
-- Penggunaan metrik MAE untuk menghitung rata rata dari selisih absolut antara nilai prediksi dengan nilai sebenarnya sehingga hasilnya lebih mudah dipahami, hasil metrik MAE yang didapatkan pada kasus proyek ini dapat dilihat pada gambar di bawah ini.  
+- Penggunaan metrik MSE untuk memberikan penalti lebih besar pada kesalahan yang jauh sehingga dapat membantu model lebih peka terhadap prediksi yang jauh melesat. Pada kasus ini, hasil metrik MSE yang didapatkan pada data train dan test dapat dilihat pada gambar di bawah ini. <br>
+  ![hasil-metrik-mse-submission1-mlt](https://github.com/user-attachments/assets/3bc163f7-9fdd-401a-b243-cd0024624786)
+
+- Penggunaan metrik MAE untuk menghitung rata rata dari selisih absolut antara nilai prediksi dengan nilai sebenarnya sehingga hasilnya lebih mudah dipahami, hasil metrik MAE yang didapatkan pada kasus proyek ini dapat dilihat pada gambar di bawah ini. <br>
+  ![hasil-metrik-mae-submission1-mlt](https://github.com/user-attachments/assets/751ceee5-96a1-4abc-9c71-4f326836a559)
 
 - Dalam kasus prediksi nilai **Exam_Score**, model Random Forest (RF) dan KNN menunjukkan performa yang cukup baik dengan prediksi yang mendekati nilai aktual. Namun, jika dibandingkan berdasarkan dua metrik evaluasi, berikut penilaiannya:
     * ![hasil-prediksi-proyek](https://github.com/user-attachments/assets/e6a4ad29-196a-484e-a0c8-d03bb104e7e2)
