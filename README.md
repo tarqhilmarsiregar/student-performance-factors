@@ -46,6 +46,9 @@ Kondisi Data:
 - Terdapat fitur dengan tipe kategorikal dan numerik
 - Beberapa fitur perlu dilakukan encoding (seperti Parental_Involvement, dll)
 - Distribusi nilai numerik cukup bervariasi, sehingga perlu pertimbangan normalisasi/standarisasi, terutama untuk algoritma berbasis jarak seperti KNN
+- Terdapat missing value seperti pada kolom **Teacher_Quality**, **Parental_Education_Level**
+- Terdapat Outlier seperti pada kolom **Hours_Studied** namun hal ini tidak menjadi permasalahan yang serius dikarenakan bisa saja hal tersebut benar benar terjadi pada students
+- Pada dataset ini tidak ditemukan adanya data duplikat
 
 Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
@@ -96,7 +99,7 @@ Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:
     * ![drop-kolom-dengan-korelasi-rendah-dan-tidak-ada-korelasi](https://github.com/user-attachments/assets/6b45bb5a-2656-478d-b349-ad631eadb454)
 
 ## Data Preparation
-Sebelum membangun model machine learning, dilakukan beberapa tahap persiapan data untuk memastikan bahwa data dalam kondisi optimal untuk dilatih dan diuji oleh algoritma. Berikut teknik-teknik data preparation yang digunakan secara berurutan seperti **One Hot Encoding**, **Train-Test Split**, dan **Standarisasi (Standardization)**
+Sebelum membangun model machine learning, dilakukan beberapa tahap persiapan data untuk memastikan bahwa data dalam kondisi optimal untuk dilatih dan diuji oleh algoritma. Hal hal lain seperti **menghapus data dengan missing value** telah dianalisis dan dilakukan pada tahapan EDA, kemudian pemilihan fitur yang relevan tersebut telah dilakukan pada tahapan EDA juga melalui **correlation matrix** sehingga dari fitur numerik yang ada menjadi tahu mana yang memiliki korelasi baik dengan **variabel target**. Berikut teknik-teknik data preparation yang digunakan secara berurutan seperti **One Hot Encoding**, **Train-Test Split**, dan **Standarisasi (Standardization)**
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Pada tahapan data preparation ini, saya menggunakan teknik **one-hot-encoding** untuk melakukan encoding fitur kategori dikarenakan hal ini penting dilakukan mengingat bahwa model machine learning hanya akan memproses data dengan tipe data numerik
@@ -133,8 +136,9 @@ Untuk menyelesaikan permasalahan prediksi skor ujian siswa, dilakukan beberapa t
 Saya memilih kasus regresi dan menggunakan metrik MAE (Mean Absolute Error) dan MSE (Mean Squared Error)
 
 Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penggunaan metrik MSE untuk memberikan penalti lebih besar pada kesalahan yang jauh sehingga dapat membantu model lebih peka terhadap prediksi yang jauh melesat. 
-- Penggunaan metrik MAE untuk menghitung rata rata dari selisih absolut antara nilai prediksi dengan nilai sebenarnya sehingga hasilnya lebih mudah dipahami, misalnya meleset 0.005 dari nilai sebenarnya
+- Penggunaan metrik MSE untuk memberikan penalti lebih besar pada kesalahan yang jauh sehingga dapat membantu model lebih peka terhadap prediksi yang jauh melesat. Pada kasus ini, hasil metrik MSE yang didapatkan pada data train dan test dapat dilihat pada gambar di bawah ini.
+- Penggunaan metrik MAE untuk menghitung rata rata dari selisih absolut antara nilai prediksi dengan nilai sebenarnya sehingga hasilnya lebih mudah dipahami, hasil metrik MAE yang didapatkan pada kasus proyek ini dapat dilihat pada gambar di bawah ini.  
+
 - Dalam kasus prediksi nilai **Exam_Score**, model Random Forest (RF) dan KNN menunjukkan performa yang cukup baik dengan prediksi yang mendekati nilai aktual. Namun, jika dibandingkan berdasarkan dua metrik evaluasi, berikut penilaiannya:
     * ![hasil-prediksi-proyek](https://github.com/user-attachments/assets/e6a4ad29-196a-484e-a0c8-d03bb104e7e2)
         1. Random Forest memiliki nilai MAE dan MSE yang lebih kecil dibandingkan KNN, yang berarti prediksi dari Random Forest lebih akurat dan stabil.
