@@ -75,28 +75,28 @@ Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:
 - Exam_Score: Skor ujian akhir -> Target
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
-1. Deskripsi Variabel
-    * ![eda-deskripsi-variabel](https://github.com/user-attachments/assets/314350c1-5d96-40e2-9b5a-10dc14b94e9f)
+1. Deskripsi Variabel <br>
+   ![eda-deskripsi-variabel](https://github.com/user-attachments/assets/314350c1-5d96-40e2-9b5a-10dc14b94e9f)
 
-2. Memeriksa Missing Value
-    * ![eda-missing-value](https://github.com/user-attachments/assets/bbedd64d-d059-4298-9a11-2487b56993e4)
+2. Memeriksa Missing Value <br>
+   ![eda-missing-value](https://github.com/user-attachments/assets/bbedd64d-d059-4298-9a11-2487b56993e4)
 
-3. Mendeteksi Outlier
-    * ![eda-outlier](https://github.com/user-attachments/assets/709f5a8b-1055-450a-b468-0ce557041f02)
+3. Mendeteksi Outlier <br>
+   ![eda-outlier](https://github.com/user-attachments/assets/709f5a8b-1055-450a-b468-0ce557041f02)
 
-4. Univariate Analysis (Numerical & Categorical)
-    * ![eda-univariate-numerical](https://github.com/user-attachments/assets/7079414f-4e24-4616-bd23-c00143a1efa7)
-    * ![eda-univariate-categorical](https://github.com/user-attachments/assets/042d2a4f-b83e-4803-b6ad-7ee8f6d58e9e)
+4. Univariate Analysis (Numerical & Categorical) <br>
+   ![eda-univariate-numerical](https://github.com/user-attachments/assets/7079414f-4e24-4616-bd23-c00143a1efa7) <br>
+   ![eda-univariate-categorical](https://github.com/user-attachments/assets/042d2a4f-b83e-4803-b6ad-7ee8f6d58e9e)
 
-5. Multivariate Analysis (Numerical & Categorical)
-    * ![eda-multivariate-numerical](https://github.com/user-attachments/assets/91377e86-eb72-4534-8243-a0d011ebf716)
-    * ![eda-multivariate-categorical](https://github.com/user-attachments/assets/02f78d29-1ba7-4630-afdb-7a7203fbc016)
+5. Multivariate Analysis (Numerical & Categorical) <br>
+   ![eda-multivariate-numerical](https://github.com/user-attachments/assets/91377e86-eb72-4534-8243-a0d011ebf716) <br>
+   ![eda-multivariate-categorical](https://github.com/user-attachments/assets/02f78d29-1ba7-4630-afdb-7a7203fbc016)
 
-6. Correlation Matrix
-    * ![corr_matrix](https://github.com/user-attachments/assets/4a68597a-0ba0-4203-98d8-f03f7f92de29)
+6. Correlation Matrix <br>
+   ![corr_matrix](https://github.com/user-attachments/assets/4a68597a-0ba0-4203-98d8-f03f7f92de29)
 
-7. Drop Kolom Numerik yang Tidak Memiliki Korelasi atau dengan Korelasi Rendah mendekati 0
-    * ![drop-kolom-dengan-korelasi-rendah-dan-tidak-ada-korelasi](https://github.com/user-attachments/assets/6b45bb5a-2656-478d-b349-ad631eadb454)
+7. Drop Kolom Numerik yang Tidak Memiliki Korelasi atau dengan Korelasi Rendah mendekati 0 <br>
+   ![drop-kolom-dengan-korelasi-rendah-dan-tidak-ada-korelasi](https://github.com/user-attachments/assets/6b45bb5a-2656-478d-b349-ad631eadb454)
 
 ## Data Preparation
 Sebelum membangun model machine learning, dilakukan beberapa tahap persiapan data untuk memastikan bahwa data dalam kondisi optimal untuk dilatih dan diuji oleh algoritma. Hal hal lain seperti **menghapus data dengan missing value** telah dianalisis dan dilakukan pada tahapan EDA, kemudian pemilihan fitur yang relevan tersebut telah dilakukan pada tahapan EDA juga melalui **correlation matrix** sehingga dari fitur numerik yang ada menjadi tahu mana yang memiliki korelasi baik dengan **variabel target**. Berikut teknik-teknik data preparation yang digunakan secara berurutan seperti **One Hot Encoding**, **Train-Test Split**, dan **Standarisasi (Standardization)**
@@ -129,8 +129,8 @@ Untuk menyelesaikan permasalahan prediksi skor ujian siswa, dilakukan beberapa t
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Kelebihan algoritma Random Forest yakni akurasi tinggi karena menggunakan banyak decision tree sehingga hasil prediksi lebih stabil. Kekurangan nya yakni lebih lambat untuk prediksi karena menggunakan banyak pohon yang harus dievaluasi
 - Kelebihan algoritma KNN yakni sederhana dan mudah dipahami serta diimplementasikan, namun kekurangan nya adalah sensitif terhadap skala data maka dari itu harus distandarisasi terlebih dulu. 
-- Berdasarkan gambar di bawah ini, terlihat bahwa model Random Forest (RF) memberikan nilai error yang paling kecil. Sedangkan model dengan algoritma KNN memiliki error yang paling besar (berdasrkan grafik, angkanya di atas 0.006). Sehingga model Random Forest (RF) yang akan saya pilih sebagai model terbaik untuk melakukan prediksi **Exam_Score**
-    * ![rf-vs-knn](https://github.com/user-attachments/assets/dc6a9049-d204-4c14-ba61-17819eff242f)
+- Berdasarkan gambar di bawah ini, terlihat bahwa model Random Forest (RF) memberikan nilai error yang paling kecil. Sedangkan model dengan algoritma KNN memiliki error yang paling besar (berdasrkan grafik, angkanya di atas 0.006). Sehingga model Random Forest (RF) yang akan saya pilih sebagai model terbaik untuk melakukan prediksi **Exam_Score** <br>
+  ![rf-vs-knn](https://github.com/user-attachments/assets/dc6a9049-d204-4c14-ba61-17819eff242f)
 
 ## Evaluation
 Saya memilih kasus regresi dan menggunakan metrik MAE (Mean Absolute Error) dan MSE (Mean Squared Error)
@@ -142,22 +142,22 @@ Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, 
 - Penggunaan metrik MAE untuk menghitung rata rata dari selisih absolut antara nilai prediksi dengan nilai sebenarnya sehingga hasilnya lebih mudah dipahami, hasil metrik MAE yang didapatkan pada kasus proyek ini dapat dilihat pada gambar di bawah ini. <br>
   ![hasil-metrik-mae-submission1-mlt](https://github.com/user-attachments/assets/751ceee5-96a1-4abc-9c71-4f326836a559)
 
-- Dalam kasus prediksi nilai **Exam_Score**, model Random Forest (RF) dan KNN menunjukkan performa yang cukup baik dengan prediksi yang mendekati nilai aktual. Namun, jika dibandingkan berdasarkan dua metrik evaluasi, berikut penilaiannya:
-    * ![hasil-prediksi-proyek](https://github.com/user-attachments/assets/e6a4ad29-196a-484e-a0c8-d03bb104e7e2)
-        1. Random Forest memiliki nilai MAE dan MSE yang lebih kecil dibandingkan KNN, yang berarti prediksi dari Random Forest lebih akurat dan stabil.
-        2. MAE Random Forest sebesar 0.2 menunjukkan bahwa rata-rata kesalahan prediksi hanya sekitar 0.2 poin dari nilai sebenarnya, sedangkan KNN meleset sekitar 0.4 poin.
-        3. Dari sisi MSE, Random Forest juga lebih baik (0.04 vs 0.16), yang menunjukkan bahwa model ini kurang rentan terhadap kesalahan ekstrem.
+- Dalam kasus prediksi nilai **Exam_Score**, model Random Forest (RF) dan KNN menunjukkan performa yang cukup baik dengan prediksi yang mendekati nilai aktual. Namun, jika dibandingkan berdasarkan dua metrik evaluasi, berikut penilaiannya: <br>
+  ![hasil-prediksi-proyek](https://github.com/user-attachments/assets/e6a4ad29-196a-484e-a0c8-d03bb104e7e2) <br>
+      - Random Forest memiliki nilai MAE dan MSE yang lebih kecil dibandingkan KNN, yang berarti prediksi dari Random Forest lebih akurat dan stabil. <br>
+      - MAE Random Forest sebesar 0.2 menunjukkan bahwa rata-rata kesalahan prediksi hanya sekitar 0.2 poin dari nilai sebenarnya, sedangkan KNN meleset sekitar 0.4 poin. <br>
+      - Dari sisi MSE, Random Forest juga lebih baik (0.04 vs 0.16), yang menunjukkan bahwa model ini kurang rentan terhadap kesalahan ekstrem.
 
 Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
-- MAE (Mean Absolute Error)
-    - ![mae](https://github.com/user-attachments/assets/b994ab4d-6943-420b-bd65-6af009568a8c)
-    - Formula dari metrik ini digunakan untuk menghitung selisih absolut antara nilai aktual dengan nilai prediksi kemudian semua selisih nya dijumlahkan, lalu dirata ratakan
+- MAE (Mean Absolute Error) <br>
+  ![mae](https://github.com/user-attachments/assets/b994ab4d-6943-420b-bd65-6af009568a8c) <br>
+  Formula dari metrik ini digunakan untuk menghitung selisih absolut antara nilai aktual dengan nilai prediksi kemudian semua selisih nya dijumlahkan, lalu dirata ratakan
 
-- MSE (Mean Squared Error)
-    - ![mse](https://github.com/user-attachments/assets/b2d99ddd-c9b8-49c0-8355-d4cad4a3afcb)
-    - Formula dari metrik ini digunakan untuk menghitung rata rata dari kuadrat selisih antara nilai aktual dengan nilai prediksi. Hal ini sama dengan MAE, namun hasilnya akan dikuadratkan. Karena, dikuadratkan maka kesalahan besar akan dihukum / penalti lebih keras
+- MSE (Mean Squared Error) <br>
+  ![mse](https://github.com/user-attachments/assets/b2d99ddd-c9b8-49c0-8355-d4cad4a3afcb) <br>
+  Formula dari metrik ini digunakan untuk menghitung rata rata dari kuadrat selisih antara nilai aktual dengan nilai prediksi. Hal ini sama dengan MAE, namun hasilnya akan dikuadratkan. Karena, dikuadratkan maka kesalahan besar akan dihukum / penalti lebih keras
 
 **---Ini adalah bagian akhir laporan---**
 
