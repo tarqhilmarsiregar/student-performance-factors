@@ -24,8 +24,6 @@ Menjelaskan tujuan dari pernyataan masalah:
 - Membangun model regresi yang mampu memprediksi skor akhir siswa (Exam_Score) untuk mendukung intervensi pendidikan lebih awal
 - Menggunakan model ML (seperti Random Forest) untuk menilai feature importance
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
 
@@ -48,9 +46,7 @@ Kondisi Data:
 - Distribusi nilai numerik cukup bervariasi, sehingga perlu pertimbangan normalisasi/standarisasi, terutama untuk algoritma berbasis jarak seperti KNN
 - Terdapat missing value seperti pada kolom **Teacher_Quality**, **Parental_Education_Level**
 - Terdapat Outlier seperti pada kolom **Hours_Studied** namun hal ini tidak menjadi permasalahan yang serius dikarenakan bisa saja hal tersebut benar benar terjadi pada students
-- Pada dataset ini tidak ditemukan adanya data duplikat
-
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+- Pada dataset ini tidak ditemukan adanya data duplikat 
 
 ### Variabel-variabel pada Student Performance Factors dataset adalah sebagai berikut:
 - Hours_Studied: Jumlah jam yang dihabiskan untuk belajar per minggu
@@ -99,12 +95,19 @@ Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:
    ![drop-kolom-dengan-korelasi-rendah-dan-tidak-ada-korelasi](https://github.com/user-attachments/assets/6b45bb5a-2656-478d-b349-ad631eadb454)
 
 ## Data Preparation
-Sebelum membangun model machine learning, dilakukan beberapa tahap persiapan data untuk memastikan bahwa data dalam kondisi optimal untuk dilatih dan diuji oleh algoritma. Hal hal lain seperti **menghapus data dengan missing value** telah dianalisis dan dilakukan pada tahapan EDA, kemudian pemilihan fitur yang relevan tersebut telah dilakukan pada tahapan EDA juga melalui **correlation matrix** sehingga dari fitur numerik yang ada menjadi tahu mana yang memiliki korelasi baik dengan **variabel target**. Berikut teknik-teknik data preparation yang digunakan secara berurutan seperti **One Hot Encoding**, **Train-Test Split**, dan **Standarisasi (Standardization)**
+Sebelum membangun model machine learning, dilakukan beberapa tahap persiapan data untuk memastikan bahwa data dalam kondisi optimal untuk dilatih dan diuji oleh algoritma. Hal hal tersebut diantaranya:
+- Menghapus Data dengan Missing Value
+- Feature Selection Melalui Correlation Matrix
+- One Hot Encoding
+- Train Test Split
+- Standarisasi
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
-- Pada tahapan data preparation ini, saya menggunakan teknik **one-hot-encoding** untuk melakukan encoding fitur kategori dikarenakan hal ini penting dilakukan mengingat bahwa model machine learning hanya akan memproses data dengan tipe data numerik
-- Di tahapan **train-test-split** ini saya membagi dataset dengan proporsi 90:10 agar data uji tidak diambil banyak dari data latih
-- Kemudian, saya melakukan standarisasi fitur numerik seperti **Hours_Studied** dan **Attendance** menggunakan **StandardScaler** untuk membuat rentang nilai menjadi mean 0 dan standar deviasi 1, mengingat pada projek ini saya akan menggunakan algoritma Random Forest dan KNN. Pada standarisasi ini pula saya hanya menerapkan pada data latih saja dikarenakan untuk menghindari kebocoran informasi pada data uji
+- **Penghapusan Missing Value** dilakukan agar analisis lebih akurat dan tidak bias akibat data yang hilang
+- Melakukan **Feature Selection** untuk memastikan hanya fitur yang memiliki korelasi yang baik dengan target yang dapat diproses lebih lanjut ke tahap model development
+- Pada tahapan data preparation ini, menggunakan teknik **one-hot-encoding** untuk melakukan encoding fitur kategori dikarenakan hal ini penting dilakukan mengingat bahwa model machine learning hanya akan memproses data dengan tipe data numerik
+- Di tahapan **train-test-split** membagi dataset dengan proporsi 90:10 agar data uji tidak diambil banyak dari data latih
+- Kemudian, melakukan standarisasi fitur numerik seperti **Hours_Studied** dan **Attendance** menggunakan **StandardScaler** untuk membuat rentang nilai menjadi mean 0 dan standar deviasi 1, dikarenakan pada projek ini akan menggunakan algoritma Random Forest dan KNN. Pada standarisasi ini hanya menerapkan pada data latih saja dikarenakan untuk menghindari kebocoran informasi pada data uji
 
 ## Modeling
 Untuk menyelesaikan permasalahan prediksi skor ujian siswa, dilakukan beberapa tahapan pemodelan machine learning secara sistematis. Dua algoritma digunakan: Random Forest Regressor dan K-Nearest Neighbors Regressor (KNN). Berikut penjelasan tiap tahapan dan parameter yang digunakan:
@@ -133,9 +136,7 @@ Untuk menyelesaikan permasalahan prediksi skor ujian siswa, dilakukan beberapa t
   ![rf-vs-knn](https://github.com/user-attachments/assets/dc6a9049-d204-4c14-ba61-17819eff242f)
 
 ## Evaluation
-Saya memilih kasus regresi dan menggunakan metrik MAE (Mean Absolute Error) dan MSE (Mean Squared Error)
-
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
+Berdasarkan hal tersebut di atas, pada projek ini akan memilih dan menggunakan kasus regresi serta menggunakan metrik MAE (Mean Absolute Error) dan MSE (Mean Squared Error). Berikut ini beberapa penjelasan terkait hal tersebut:
 - Penggunaan metrik MSE untuk memberikan penalti lebih besar pada kesalahan yang jauh sehingga dapat membantu model lebih peka terhadap prediksi yang jauh melesat. Pada kasus ini, hasil metrik MSE yang didapatkan pada data train dan test dapat dilihat pada gambar di bawah ini. <br>
   ![hasil-metrik-mse-submission1-mlt](https://github.com/user-attachments/assets/3bc163f7-9fdd-401a-b243-cd0024624786)
 
@@ -148,8 +149,6 @@ Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, 
       - MAE Random Forest sebesar 0.2 menunjukkan bahwa rata-rata kesalahan prediksi hanya sekitar 0.2 poin dari nilai sebenarnya, sedangkan KNN meleset sekitar 0.4 poin. <br>
       - Dari sisi MSE, Random Forest juga lebih baik (0.04 vs 0.16), yang menunjukkan bahwa model ini kurang rentan terhadap kesalahan ekstrem.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - MAE (Mean Absolute Error) <br>
   ![mae](https://github.com/user-attachments/assets/b994ab4d-6943-420b-bd65-6af009568a8c) <br>
@@ -158,10 +157,4 @@ Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, probl
 - MSE (Mean Squared Error) <br>
   ![mse](https://github.com/user-attachments/assets/b2d99ddd-c9b8-49c0-8355-d4cad4a3afcb) <br>
   Formula dari metrik ini digunakan untuk menghitung rata rata dari kuadrat selisih antara nilai aktual dengan nilai prediksi. Hal ini sama dengan MAE, namun hasilnya akan dikuadratkan. Karena, dikuadratkan maka kesalahan besar akan dihukum / penalti lebih keras
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
 
