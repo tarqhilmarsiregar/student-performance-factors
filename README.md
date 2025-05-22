@@ -6,7 +6,6 @@ Pendidikan merupakan fondasi utama dalam membentuk masa depan generasi muda. Nam
 
 Untuk mengatasi tantangan ini, teknologi machine learning memberikan solusi yang menjanjikan. Dengan memanfaatkan data historis seperti jumlah jam belajar, kehadiran, tingkat keterlibatan orang tua, serta skor ujian sebelumnya, model prediktif dapat digunakan untuk mengidentifikasi siswa yang berpotensi mengalami kesulitan. Pendekatan ini memungkinkan pendidik melakukan intervensi secara lebih tepat dan cepat sebelum masalah menjadi lebih serius.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
 - Mengidentifikasi dini siswa berisiko: Memprediksi performa akademik memungkinkan pendidik untuk mengenali siswa yang mungkin mengalami kesulitan belajar sebelum masalah tersebut menjadi serius dengan mengumpulkan data relevan seperti kehadiran, keterlibatan orang tua, akses ke sumber daya, jam belajar dan skor ujian sebelumnya. Kemudian, untuk menyelesaikan permasalahan tersebut, menurut studi oleh Orji dan Vassileva (2022), model machine learning dapat mencapai akurasi hingga 94,9% dalam memprediksi performa siswa, memungkinkan intervensi yang lebih efektif.
 - Orji, F. A., & Vassileva, J. (2022). Machine learning approach for predicting students academic performance and study strategies based on their motivation. arXiv preprint arXiv:2210.08186.
 
@@ -24,7 +23,6 @@ Menjelaskan tujuan dari pernyataan masalah:
 - Membangun model regresi yang mampu memprediksi skor akhir siswa (Exam_Score) untuk mendukung intervensi pendidikan lebih awal
 - Menggunakan model ML (seperti Random Forest) untuk menilai feature importance
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
 - Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
 
     ### Solution statements
@@ -70,7 +68,6 @@ Kondisi Data:
 - Gender: Jenis kelamin siswa (Pria, Wanita)
 - Exam_Score: Skor ujian akhir -> Target
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
 1. Deskripsi Variabel <br>
    ![eda-deskripsi-variabel](https://github.com/user-attachments/assets/314350c1-5d96-40e2-9b5a-10dc14b94e9f)
 
@@ -102,7 +99,6 @@ Sebelum membangun model machine learning, dilakukan beberapa tahap persiapan dat
 - Train Test Split
 - Standarisasi
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
 - **Penghapusan Missing Value** dilakukan agar analisis lebih akurat dan tidak bias akibat data yang hilang
 - Melakukan **Feature Selection** untuk memastikan hanya fitur yang memiliki korelasi yang baik dengan target yang dapat diproses lebih lanjut ke tahap model development
 - Pada tahapan data preparation ini, menggunakan teknik **one-hot-encoding** untuk melakukan encoding fitur kategori dikarenakan hal ini penting dilakukan mengingat bahwa model machine learning hanya akan memproses data dengan tipe data numerik
@@ -129,7 +125,6 @@ Untuk menyelesaikan permasalahan prediksi skor ujian siswa, dilakukan beberapa t
 <br>
     Fitur harus distandarisasi sebelum pelatihan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
 - Kelebihan algoritma Random Forest yakni akurasi tinggi karena menggunakan banyak decision tree sehingga hasil prediksi lebih stabil. Kekurangan nya yakni lebih lambat untuk prediksi karena menggunakan banyak pohon yang harus dievaluasi
 - Kelebihan algoritma KNN yakni sederhana dan mudah dipahami serta diimplementasikan, namun kekurangan nya adalah sensitif terhadap skala data maka dari itu harus distandarisasi terlebih dulu. 
 - Berdasarkan gambar di bawah ini, terlihat bahwa model Random Forest (RF) memberikan nilai error yang paling kecil. Sedangkan model dengan algoritma KNN memiliki error yang paling besar (berdasrkan grafik, angkanya di atas 0.006). Sehingga model Random Forest (RF) yang akan saya pilih sebagai model terbaik untuk melakukan prediksi **Exam_Score** <br>
@@ -149,7 +144,6 @@ Berdasarkan hal tersebut di atas, pada projek ini akan memilih dan menggunakan k
       - MAE Random Forest sebesar 0.2 menunjukkan bahwa rata-rata kesalahan prediksi hanya sekitar 0.2 poin dari nilai sebenarnya, sedangkan KNN meleset sekitar 0.4 poin. <br>
       - Dari sisi MSE, Random Forest juga lebih baik (0.04 vs 0.16), yang menunjukkan bahwa model ini kurang rentan terhadap kesalahan ekstrem.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
 - MAE (Mean Absolute Error) <br>
   ![mae](https://github.com/user-attachments/assets/b994ab4d-6943-420b-bd65-6af009568a8c) <br>
   Formula dari metrik ini digunakan untuk menghitung selisih absolut antara nilai aktual dengan nilai prediksi kemudian semua selisih nya dijumlahkan, lalu dirata ratakan
