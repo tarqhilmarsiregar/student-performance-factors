@@ -85,13 +85,12 @@ Setelah melakukan analisis dan pemodelan, beberapa *insight* kunci yang ditemuka
 -   **Rekomendasi**: Berdasarkan temuan ini, sangat direkomendasikan untuk mendorong peningkatan waktu belajar dan kehadiran siswa di kelas guna meningkatkan skor ujian mereka secara signifikan.
 
 **Visualisasi Kunci:**
-*(Sertakan screenshot atau link ke grafik/plot penting dari notebook Anda yang menunjukkan insight)*
 
-![Distribusi Nilai Akhir](link_gambar_distribusi_nilai.png)
-*(Ganti dengan link ke gambar yang Anda upload ke repositori atau tempat lain)*
+![Multivariate Analysis (Numerical & Categorical)](https://github.com/user-attachments/assets/25d381e2-f108-460c-bfa0-f9275d5ca9c7)
 
-![Feature Importance Model](link_gambar_feature_importance.png)
-*(Ganti dengan link ke gambar yang Anda upload ke repositori atau tempat lain)*
+![Correlation Matrix](https://github.com/user-attachments/assets/9e94f102-7654-46d4-903d-1e232728f743)
+
+![RF vs KNN](https://github.com/user-attachments/assets/b56f73d8-b300-49e6-8f69-2cbdb653294b)
 
 ## Kesimpulan
 
