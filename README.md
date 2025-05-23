@@ -1,160 +1,102 @@
-# Laporan Proyek Machine Learning - Tarq Hilmar Siregar
+# Analisis Faktor Penentu Performa Siswa: Prediksi Skor Ujian
 
-## Domain Proyek
+Proyek ini menganalisis berbagai faktor demografis, sosial, dan perilaku siswa untuk **mengidentifikasi variabel-variaribel kunci yang memengaruhi performa akademik**. Implementasi dilakukan menggunakan **Google Colab** untuk analisis data dan pemodelan Machine Learning.
 
-Pendidikan merupakan fondasi utama dalam membentuk masa depan generasi muda. Namun, tidak semua siswa mampu mencapai performa akademik yang optimal. Banyak faktor yang dapat memengaruhi pencapaian belajar siswa, seperti tingkat kehadiran, jam belajar, dukungan dari orang tua, hingga akses terhadap sumber daya pembelajaran. Kurangnya pemantauan dan intervensi dini dapat menyebabkan siswa berisiko mengalami ketertinggalan dalam proses belajar, yang pada akhirnya berdampak pada prestasi akademik mereka.
+## Daftar Isi
 
-Untuk mengatasi tantangan ini, teknologi machine learning memberikan solusi yang menjanjikan. Dengan memanfaatkan data historis seperti jumlah jam belajar, kehadiran, tingkat keterlibatan orang tua, serta skor ujian sebelumnya, model prediktif dapat digunakan untuk mengidentifikasi siswa yang berpotensi mengalami kesulitan. Pendekatan ini memungkinkan pendidik melakukan intervensi secara lebih tepat dan cepat sebelum masalah menjadi lebih serius.
+- [Latar Belakang](#latar-belakang)
+- [Tujuan Proyek](#tujuan-proyek)
+- [Dataset](#dataset)
+- [Metodologi](#metodologi)
+- [Teknologi yang Digunakan](#teknologi-yang-digunakan)
+- [Struktur Proyek](#struktur-proyek)
+- [Cara Menjalankan Proyek](#cara-menjalankan-proyek)
+- [Hasil dan Insight](#hasil-dan-insight)
+- [Kesimpulan](#kesimpulan)
+- [Lisensi](#lisensi)
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Mengidentifikasi dini siswa berisiko: Memprediksi performa akademik memungkinkan pendidik untuk mengenali siswa yang mungkin mengalami kesulitan belajar sebelum masalah tersebut menjadi serius dengan mengumpulkan data relevan seperti kehadiran, keterlibatan orang tua, akses ke sumber daya, jam belajar dan skor ujian sebelumnya. Kemudian, untuk menyelesaikan permasalahan tersebut, menurut studi oleh Orji dan Vassileva (2022), model machine learning dapat mencapai akurasi hingga 94,9% dalam memprediksi performa siswa, memungkinkan intervensi yang lebih efektif.
-- Orji, F. A., & Vassileva, J. (2022). Machine learning approach for predicting students academic performance and study strategies based on their motivation. arXiv preprint arXiv:2210.08186.
+## Latar Belakang
 
-## Business Understanding
+Memahami faktor-faktor yang berkontribusi pada performa akademik siswa adalah krusial bagi pendidik, orang tua, dan pembuat kebijakan. Proyek ini bertujuan untuk menggali hubungan antara karakteristik siswa dan nilai akhir mereka untuk mengidentifikasi area intervensi yang potensial.
 
-### Problem Statements
+## Tujuan Proyek
 
-Menjelaskan pernyataan masalah latar belakang:
-- Bagaimana kita dapat memprediksi skor ujian akhir siswa berdasarkan faktor-faktor personal, sosial, dan akademik?
-- Faktor-faktor apa yang paling berpengaruh terhadap performa ujian akhir siswa?
+-   Melakukan **eksplorasi data (EDA)** untuk memahami distribusi dan hubungan antar variabel.
+-   Mengidentifikasi **faktor-faktor dominan** yang paling berpengaruh terhadap nilai siswa.
+-   Membangun **model Machine Learning** regresi untuk memprediksi performa siswa berdasarkan exam_score.
+-   Menyajikan **insight** yang dapat ditindaklanjuti bagi pihak yang berkepentingan.
 
-### Goals
+## Dataset
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Membangun model regresi yang mampu memprediksi skor akhir siswa (Exam_Score) untuk mendukung intervensi pendidikan lebih awal
-- Menggunakan model ML (seperti Random Forest) untuk menilai feature importance
+Dataset yang digunakan berasal dari [Kaggle](https://www.kaggle.com/datasets/lainguyn123/student-performance-factors). Dataset ini berisi informasi demografi (gender), faktor keluarga (parental_involvement, family_income, parental_education_level), faktor sekolah (access_to_resources, internet_access, teacher_quality, school_type), dan perilaku (hours_studied, attendance, extracurricular_activities, sleep_hours, motivation_level, physical_activity), serta exam_score siswa.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
+* **Ukuran Data**: 6.607 baris, 20 kolom.
+* **Kolom Kunci**: `Hours_Studied`, `Attendance`, `Parental_Involvement`, `Access_to_Resources`, `Extracurricular_Activities`, `Sleep_Hours`, `Previous_Scores`, `Motivation_Level`, `Internet_Access`, `Tutoring_Sessions`, `Family_Income`, `Teacher_Quality`, `School_Type`, `Peer_Influence`, `Physical_Activity`, `Learning_Disabilities`, `Parental_Education_Level`, `Distance_from_Home`, `Gender`, `Exam_Score` (Target)
 
-    ### Solution statements
-    - Menggunakan algoritma Random Forest dan K-Nearest Neighbour untuk membangun model dasar. Kemudian, membandingkan kinerja model berdasarkan metrik evaluasi seperti MSE dan MAE
-    - Menerapkan teknik Encoding Fitur Kategori seperti Low, Medium, High
+## Metodologi
 
-## Data Understanding
-Proyek ini menggunakan dataset berjudul **Student Performance Factors** yang tersedia secara publik di platform [Kaggle](https://www.kaggle.com/datasets/lainguyn123/student-performance-factors). Dataset ini berisi data siswa dengan berbagai faktor yang dapat memengaruhi performa akademik mereka, seperti jumlah jam belajar, tingkat kehadiran, keterlibatan orang tua, akses terhadap sumber daya pembelajaran, serta skor ujian.
+Proyek ini mengikuti tahapan analisis data dan Machine Learning berikut:
 
-Detail Dataset:
-- Jumlah Data (Baris): 6.607 entri
-- Jumlah Fitur (Kolom): 20 fitur input
-- Target Prediksi: Exam_Score (Skor ujian)
-- Format File: CSV (.csv)
+1.  **Pengumpulan Data**: Dataset di-*load* langsung ke Google Colab.
+2.  **Pembersihan dan Pra-pemrosesan Data**: Penanganan *missing values*, *outliers*, normalisasi/standarisasi data, dan *encoding* variabel kategorikal.
+3.  **Eksplorasi Data Analitis (EDA)**: Analisis statistik deskriptif, visualisasi distribusi variabel, dan korelasi antar fitur.
+4.  **Pemilihan Fitur (Feature Selection/Engineering)**: Identifikasi fitur paling relevan yang memengaruhi nilai siswa.
+5.  **Pemodelan Machine Learning**:
+    * **Jenis Model**: Random Forest Regressor dan K-Nearest Neighbors Regressor
+    * **Evaluasi Model**: Metrik MAE (Mean Absolute Error) dan MSE (Mean Squared Error)
+6.  **Interpretasi Model dan Insight**: Menganalisis *feature importance* dari model untuk menarik kesimpulan yang berarti.
 
-Kondisi Data:
-- Terdapat fitur dengan tipe kategorikal dan numerik
-- Beberapa fitur perlu dilakukan encoding (seperti Parental_Involvement, dll)
-- Distribusi nilai numerik cukup bervariasi, sehingga perlu pertimbangan normalisasi/standarisasi, terutama untuk algoritma berbasis jarak seperti KNN
-- Terdapat missing value seperti pada kolom **Teacher_Quality**, **Parental_Education_Level**
-- Terdapat Outlier seperti pada kolom **Hours_Studied** namun hal ini tidak menjadi permasalahan yang serius dikarenakan bisa saja hal tersebut benar benar terjadi pada students
-- Pada dataset ini tidak ditemukan adanya data duplikat 
+## Teknologi yang Digunakan
 
-### Variabel-variabel pada Student Performance Factors dataset adalah sebagai berikut:
-- Hours_Studied: Jumlah jam yang dihabiskan untuk belajar per minggu
-- Attendance: Persentase kelas yang dihadiri
-- Parental_Involvement: Tingkat keterlibatan orang tua dalam pendidikan siswa (Rendah, Sedang, Tinggi)
-- Access_to_Resources: Ketersediaan sumber daya pendidikan (Rendah, Sedang, Tinggi)
-- Extracurricular_Activities: Partisipasi dalam kegiatan ekstrakurikuler (Ya, Tidak)
-- Sleep_Hours: Jumlah rata-rata jam tidur per malam
-- Previous_Scores: Skor dari ujian sebelumnya
-- Motivation_Level: Tingkat motivasi siswa (Rendah, Sedang, Tinggi)
-- Internet_Access: Ketersediaan akses internet (Ya, Tidak)
-- Tutoring_Sessions: Jumlah sesi les yang dihadiri per bulan
-- Family_Income: Tingkat pendapatan keluarga (Rendah, Sedang, Tinggi)
-- Teacher_Quality: Kualitas guru (Rendah, Sedang, Tinggi)
-- School_Type: Jenis sekolah yang dihadiri (Publik, Swasta)
-- Peer_Influence: Pengaruh teman sebaya pada kinerja akademik (Positif, Netral, Negatif)
-- Physical_Activity: Jumlah rata-rata jam aktivitas fisik per minggu
-- Learning_Disabilities: Kehadiran ketidakmampuan belajar (Ya, Tidak)
-- Parental_Education_Level: Tingkat pendidikan orang tua tertinggi (Sekolah Menengah, Perguruan Tinggi, Pascasarjana)
-- Distance_from_Home: Jarak dari rumah ke sekolah (Dekat, Sedang, Jauh)
-- Gender: Jenis kelamin siswa (Pria, Wanita)
-- Exam_Score: Skor ujian akhir -> Target
+-   **Platform**: Google Colab
+-   **Bahasa Pemrograman**: Python
+-   **Library Python**:
+    -   `pandas`: Untuk manipulasi dan analisis data.
+    -   `numpy`: Untuk operasi numerik.
+    -   `matplotlib` & `seaborn`: Untuk visualisasi data.
+    -   `scikit-learn`: Untuk pemodelan Machine Learning (pemisahan data, model, evaluasi).
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-1. Deskripsi Variabel <br>
-   ![eda-deskripsi-variabel](https://github.com/user-attachments/assets/314350c1-5d96-40e2-9b5a-10dc14b94e9f)
+## Struktur Proyek
+```
+.
+├── student_performance_factors.ipynb       # Notebook Google Colab utama
+├── student_performance_factors.py          # Notebook dalam format .py
+└── requirements.txt                        # Daftar dependensi Python
+```
 
-2. Memeriksa Missing Value <br>
-   ![eda-missing-value](https://github.com/user-attachments/assets/bbedd64d-d059-4298-9a11-2487b56993e4)
+## Cara Menjalankan Proyek
 
-3. Mendeteksi Outlier <br>
-   ![eda-outlier](https://github.com/user-attachments/assets/709f5a8b-1055-450a-b468-0ce557041f02)
+Proyek ini dikembangkan di Google Colab, sehingga sangat mudah untuk dijalankan:
 
-4. Univariate Analysis (Numerical & Categorical) <br>
-   ![eda-univariate-numerical](https://github.com/user-attachments/assets/7079414f-4e24-4616-bd23-c00143a1efa7) <br>
-   ![eda-univariate-categorical](https://github.com/user-attachments/assets/042d2a4f-b83e-4803-b6ad-7ee8f6d58e9e)
+1.  **Akses Notebook**: Klik tautan Google Colab berikut:
+    https://colab.research.google.com/drive/1A9uFOqOCWPoSFGHrPih0p79uCAg5ZPBM?usp=sharing
 
-5. Multivariate Analysis (Numerical & Categorical) <br>
-   ![eda-multivariate-numerical](https://github.com/user-attachments/assets/91377e86-eb72-4534-8243-a0d011ebf716) <br>
-   ![eda-multivariate-categorical](https://github.com/user-attachments/assets/02f78d29-1ba7-4630-afdb-7a7203fbc016)
+2.  **Jalankan Semua Sel**: Setelah membuka notebook di Google Colab, Anda dapat menjalankan seluruh *pipeline* dengan mengklik `Runtime` -> `Run all`.
 
-6. Correlation Matrix <br>
-   ![corr_matrix](https://github.com/user-attachments/assets/4a68597a-0ba0-4203-98d8-f03f7f92de29)
+NB: Terlebih dahulu harus mendownload [Dataset](https://www.kaggle.com/datasets/lainguyn123/student-performance-factors), Setelah itu upload ke dalam Google Colab
 
-7. Drop Kolom Numerik yang Tidak Memiliki Korelasi atau dengan Korelasi Rendah mendekati 0 <br>
-   ![drop-kolom-dengan-korelasi-rendah-dan-tidak-ada-korelasi](https://github.com/user-attachments/assets/6b45bb5a-2656-478d-b349-ad631eadb454)
+## Hasil dan Insight
 
-## Data Preparation
-Sebelum membangun model machine learning, dilakukan beberapa tahap persiapan data untuk memastikan bahwa data dalam kondisi optimal untuk dilatih dan diuji oleh algoritma. Hal hal tersebut diantaranya:
-- Menghapus Data dengan Missing Value
-- Feature Selection Melalui Correlation Matrix
-- One Hot Encoding
-- Train Test Split
-- Standarisasi
+Setelah melakukan analisis dan pemodelan, beberapa *insight* kunci yang ditemukan meliputi:
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- **Penghapusan Missing Value** dilakukan agar analisis lebih akurat dan tidak bias akibat data yang hilang
-- Melakukan **Feature Selection** untuk memastikan hanya fitur yang memiliki korelasi yang baik dengan target yang dapat diproses lebih lanjut ke tahap model development
-- Pada tahapan data preparation ini, menggunakan teknik **one-hot-encoding** untuk melakukan encoding fitur kategori dikarenakan hal ini penting dilakukan mengingat bahwa model machine learning hanya akan memproses data dengan tipe data numerik
-- Di tahapan **train-test-split** membagi dataset dengan proporsi 90:10 agar data uji tidak diambil banyak dari data latih
-- Kemudian, melakukan standarisasi fitur numerik seperti **Hours_Studied** dan **Attendance** menggunakan **StandardScaler** untuk membuat rentang nilai menjadi mean 0 dan standar deviasi 1, dikarenakan pada projek ini akan menggunakan algoritma Random Forest dan KNN. Pada standarisasi ini hanya menerapkan pada data latih saja dikarenakan untuk menghindari kebocoran informasi pada data uji
+-   **Variabel Paling Berpengaruh**: `Hours_Studied`, `Attendance`
+-   **Hubungan Korelasi**: Ditemukan korelasi positif yang baik antara `Hours_Studied` dengan `Exam_Score` dan `Attendance` dengan `Exam_Score`.
+-   **Kinerja Model**: Model **Random Forest** mendapatkan nilai MSE (train dan test) masing masing sebesar **0.000992** dan **0.005163**, menunjukkan kemampuan yang baik dalam memprediksi performa siswa.
+-   **Rekomendasi**: Berdasarkan temuan ini, sangat direkomendasikan untuk mendorong peningkatan waktu belajar dan kehadiran siswa di kelas guna meningkatkan skor ujian mereka secara signifikan.
 
-## Modeling
-Untuk menyelesaikan permasalahan prediksi skor ujian siswa, dilakukan beberapa tahapan pemodelan machine learning secara sistematis. Dua algoritma digunakan: Random Forest Regressor dan K-Nearest Neighbors Regressor (KNN). Berikut penjelasan tiap tahapan dan parameter yang digunakan:
+**Visualisasi Kunci:**
+*(Sertakan screenshot atau link ke grafik/plot penting dari notebook Anda yang menunjukkan insight)*
 
-1. Random Forest Regressor: Algoritma ensemble berbasis banyak pohon keputusan (decision tree)<br>
-    Parameter yang digunakan:
-    - n_estimators = 50: Ini berarti model akan membangun 50 pohon keputusan (decision trees), semakin banyak pohon, umumnya hasil prediksi jadi lebih stabil, tapi waktu komputasi juga meningkat. Angka 50 adalah jumlah yang relatif seimbang antara performa dan efisiensi komputasi.
-    - max_depth=16: Membatasi kedalaman maksimum tiap pohon sampai 16 level. Tujuannya adalah menghindari overfitting, karena pohon yang terlalu dalam bisa terlalu menyesuaikan data latih. Depth 16 cukup dalam untuk mempelajari pola, namun tetap menjaga generalisasi.
-    - random_state=55: Digunakan untuk menetapkan seed agar hasil eksperimen konsisten setiap kali dijalankan. Tidak memengaruhi performa, tapi penting untuk reproduktibilitas.
-    - n_jobs=-1: Artinya model akan menggunakan seluruh core CPU yang tersedia secara paralel saat melatih model. Ini akan mempercepat proses pelatihan, terutama pada dataset besar.
-<br>
-    Model dilatih menggunakan data yang telah melalui one-hot encoding (tanpa standarisasi karena Random Forest tidak sensitif terhadap skala).
+![Distribusi Nilai Akhir](link_gambar_distribusi_nilai.png)
+*(Ganti dengan link ke gambar yang Anda upload ke repositori atau tempat lain)*
 
-2. K-Nearest Neighbors Regressor<br>
-    Parameter yang digunakan:
-    - n_neighbors=10: Ini berarti model KNN akan menggunakan 10 tetangga terdekat untuk memprediksi nilai target (exam score). Skor prediksi dihitung sebagai rata-rata dari nilai target ke-10 data yang paling mirip (terdekat) dengan data uji. Nilai 10 dipilih untuk mencoba mencapai keseimbangan antara bias dan variansi:
-        - Jika terlalu kecil (misal 1), model bisa terlalu sensitif terhadap noise.
-        - Jika terlalu besar, model bisa jadi terlalu "rata" dan kehilangan detail penting.
-<br>
-    Fitur harus distandarisasi sebelum pelatihan.
+![Feature Importance Model](link_gambar_feature_importance.png)
+*(Ganti dengan link ke gambar yang Anda upload ke repositori atau tempat lain)*
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Kelebihan algoritma Random Forest yakni akurasi tinggi karena menggunakan banyak decision tree sehingga hasil prediksi lebih stabil. Kekurangan nya yakni lebih lambat untuk prediksi karena menggunakan banyak pohon yang harus dievaluasi
-- Kelebihan algoritma KNN yakni sederhana dan mudah dipahami serta diimplementasikan, namun kekurangan nya adalah sensitif terhadap skala data maka dari itu harus distandarisasi terlebih dulu. 
-- Berdasarkan gambar di bawah ini, terlihat bahwa model Random Forest (RF) memberikan nilai error yang paling kecil. Sedangkan model dengan algoritma KNN memiliki error yang paling besar (berdasrkan grafik, angkanya di atas 0.006). Sehingga model Random Forest (RF) yang akan saya pilih sebagai model terbaik untuk melakukan prediksi **Exam_Score** <br>
-  ![rf-vs-knn](https://github.com/user-attachments/assets/dc6a9049-d204-4c14-ba61-17819eff242f)
+## Kesimpulan
 
-## Evaluation
-Berdasarkan hal tersebut di atas, pada projek ini akan memilih dan menggunakan kasus regresi serta menggunakan metrik MAE (Mean Absolute Error) dan MSE (Mean Squared Error). Berikut ini beberapa penjelasan terkait hal tersebut:
-- Penggunaan metrik MSE untuk memberikan penalti lebih besar pada kesalahan yang jauh sehingga dapat membantu model lebih peka terhadap prediksi yang jauh melesat. Pada kasus ini, hasil metrik MSE yang didapatkan pada data train dan test dapat dilihat pada gambar di bawah ini. <br>
-  ![hasil-metrik-mse-submission1-mlt](https://github.com/user-attachments/assets/3bc163f7-9fdd-401a-b243-cd0024624786)
+Proyek ini berhasil mengidentifikasi dan memprediksi faktor-faktor yang secara signifikan memengaruhi performa siswa. Temuan ini dapat menjadi dasar untuk pengembangan strategi pendidikan yang lebih efektif dan intervensi yang ditargetkan untuk meningkatkan hasil belajar siswa.
 
-- Penggunaan metrik MAE untuk menghitung rata rata dari selisih absolut antara nilai prediksi dengan nilai sebenarnya sehingga hasilnya lebih mudah dipahami, hasil metrik MAE yang didapatkan pada kasus proyek ini dapat dilihat pada gambar di bawah ini. <br>
-  ![hasil-metrik-mae-submission1-mlt](https://github.com/user-attachments/assets/751ceee5-96a1-4abc-9c71-4f326836a559)
+## Lisensi
 
-- Dalam kasus prediksi nilai **Exam_Score**, model Random Forest (RF) dan KNN menunjukkan performa yang cukup baik dengan prediksi yang mendekati nilai aktual. Namun, jika dibandingkan berdasarkan dua metrik evaluasi, berikut penilaiannya: <br>
-  ![hasil-prediksi-proyek](https://github.com/user-attachments/assets/e6a4ad29-196a-484e-a0c8-d03bb104e7e2) <br>
-      - Random Forest memiliki nilai MAE dan MSE yang lebih kecil dibandingkan KNN, yang berarti prediksi dari Random Forest lebih akurat dan stabil. <br>
-      - MAE Random Forest sebesar 0.2 menunjukkan bahwa rata-rata kesalahan prediksi hanya sekitar 0.2 poin dari nilai sebenarnya, sedangkan KNN meleset sekitar 0.4 poin. <br>
-      - Dari sisi MSE, Random Forest juga lebih baik (0.04 vs 0.16), yang menunjukkan bahwa model ini kurang rentan terhadap kesalahan ekstrem.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- MAE (Mean Absolute Error) <br>
-  ![mae](https://github.com/user-attachments/assets/b994ab4d-6943-420b-bd65-6af009568a8c) <br>
-  Formula dari metrik ini digunakan untuk menghitung selisih absolut antara nilai aktual dengan nilai prediksi kemudian semua selisih nya dijumlahkan, lalu dirata ratakan
-
-- MSE (Mean Squared Error) <br>
-  ![mse](https://github.com/user-attachments/assets/b2d99ddd-c9b8-49c0-8355-d4cad4a3afcb) <br>
-  Formula dari metrik ini digunakan untuk menghitung rata rata dari kuadrat selisih antara nilai aktual dengan nilai prediksi. Hal ini sama dengan MAE, namun hasilnya akan dikuadratkan. Karena, dikuadratkan maka kesalahan besar akan dihukum / penalti lebih keras
-
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
